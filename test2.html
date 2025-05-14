@@ -13,11 +13,39 @@
 <body>
     <h1>Kvadrātvienādojuma risinātājs</h1>
     <p>
-        <input type="number" id="in_a" value="a"> 
-        <input type="number" id="in_a" value="b"> 
-        <input type="number" id="in_a" value="c">
+        <input type="number" id="in_a"> 
+        <input type="number" id="in_b"> 
+        <input type="number" id="in_c">
+        <br>
+        <button type="button" onclick="Start()">Risināt</button>
         <br><br>
         Atbilde: <span id="output"></span>
     </p>
 </body>
+<script>
+    function Solve(a, b, c) {
+        var D = b*b - 4*a*c;
+        if(D < 0){
+            return [-1, -1, true];
+        }
+        D = Math.sqrt(D);
+        return [(-b+D)/(2*a), (-b-D)/(2*a), false];
+    }
+
+    function Start() {
+        var a = in_a.value;
+        var b = in_b.value;
+        var c = in_c.value;
+
+        var answer = [-2, -2, false];
+        answer = Solve(a, b, c);
+        console.log(answer[0], answer[1], answer[2]);
+        
+        if(answer[2]){
+            output.innerHTML = "Šīm vienādojumam nav saknes";
+            return;
+        }
+        output.innerHTML = "x1= "+answer[0]+"; x2= "+answer[1]+".";
+    }
+</script>
 </html>
