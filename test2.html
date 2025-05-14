@@ -24,6 +24,10 @@
 </body>
 <script>
     function Solve(a, b, c) {
+        if (isNaN(a)||isNaN(b)||isNaN(c)){
+            return [-3, -3, true]
+        }
+
         var D = b*b - 4*a*c;
         if(D < 0){
             return [-1, -1, true];
@@ -42,6 +46,9 @@
         console.log(answer[0], answer[1], answer[2]);
         
         if(answer[2]){
+            if(answer[0]==-3){
+                output.innerHTML = "Lūgums aizpildīt visus ievadlogus";
+            }
             output.innerHTML = "Šīm vienādojumam nav saknes";
             return;
         }
