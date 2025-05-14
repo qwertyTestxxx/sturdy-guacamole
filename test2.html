@@ -23,11 +23,7 @@
     </p>
 </body>
 <script>
-    function Solve(a, b, c) {
-        if (isNaN(a)||isNaN(b)||isNaN(c)){
-            return [-3, -3, true]
-        }
-
+    function Solve(a, b, c){
         var D = b*b - 4*a*c;
         if(D < 0){
             return [-1, -1, true];
@@ -41,17 +37,19 @@
         var b = in_b.value;
         var c = in_c.value;
 
-        var answer = [-2, -2, false];
+        var answer = [-2, -2, true];
         answer = Solve(a, b, c);
         console.log(answer[0], answer[1], answer[2]);
         
         if(answer[2]){
-            if(answer[0]==-3){
-                output.innerHTML = "Lūgums aizpildīt visus ievadlogus";
-            }
             output.innerHTML = "Šīm vienādojumam nav saknes";
             return;
         }
+        if(isNaN(answer[0])){
+            output.innerHTML = "Lūgums aizpildīt visus ievadlogus";
+            return
+        }
+
         output.innerHTML = "x1= "+answer[0].toFixed(2)+"; x2= "+answer[1].toFixed(2)+".";
     }
 </script>
